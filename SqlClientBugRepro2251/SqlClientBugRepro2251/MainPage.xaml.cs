@@ -23,11 +23,8 @@ namespace SqlClientBugRepro2251
             base.OnAppearing();
 
             var workersPath = Path.Combine(_path, "workers");
-            if (!Directory.Exists(workersPath))
-            {
-                Result.Text = $"Directory '{workersPath}' not found";
-                return;
-            }
+
+            Directory.CreateDirectory(workersPath);
 
             var workerPath = Path.Combine(workersPath, "sqlclient", "Workers.SqlClient.dll");
             //var workerPath = Path.Combine(workersPath, "sqlclientnewer", "Workers.SqlClientNewer.dll");
